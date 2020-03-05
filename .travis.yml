@@ -18,6 +18,9 @@ install:
 - npm install -g detox-cli
 - npm install detox
 
+before_script:
+- ./setup.sh
+
 script:
 - detox build --configuration ios.sim
 - detox test --configuration ios.sim --cleanup
