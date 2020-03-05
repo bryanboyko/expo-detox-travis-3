@@ -16,6 +16,7 @@ install:
 
 - npm install -g react-native-cli
 - npm install -g detox-cli
+- npm install detox
 
 script:
 - detox build --configuration ios.sim
