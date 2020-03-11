@@ -26,6 +26,6 @@ script:
 - echo 'Starting expo in separate process'
 - expo start --ios &
 - echo 'Waiting on expo to start in other process and open an ios sim'
-- sleep 300
+- sleep 60
 - echo 'Running detox tests'
 - detox test --configuration ios.sim --cleanup
