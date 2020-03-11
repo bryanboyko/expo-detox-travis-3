@@ -23,5 +23,6 @@ before_script:
 - ./setup.sh
 
 script:
+- expo login --username wen-kai@hotmail.com --password plastickredpoint!
 - expo build:ios --type simulator --release-channel e2e_testing
 - detox test --configuration ios.sim --cleanup
