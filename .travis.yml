@@ -16,11 +16,16 @@ install:
 
 - npm install -g react-native-cli
 - npm install -g detox-cli
+- npm install -g expo-cli
 - npm install detox
 
 before_script:
 - ./setup.sh
 
 script:
-- detox build --configuration ios.sim
+- echo 'Starting expo in separate process'
+- expo start --ios &
+- echo 'Waiting on expo to start in other process and open an ios sim'
+- sleep 300
+- echo 'Running detox tests'
 - detox test --configuration ios.sim --cleanup
