@@ -23,9 +23,5 @@ before_script:
 - ./setup.sh
 
 script:
-- echo 'Starting expo in separate process'
-- expo start --ios &
-- echo 'Waiting on expo to start in other process and open an ios sim'
-- sleep 60
-- echo 'Running detox tests'
+- expo build:ios --type simulator --release-channel e2e_testing
 - detox test --configuration ios.sim --cleanup
