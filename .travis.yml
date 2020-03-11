@@ -25,4 +25,7 @@ before_script:
 script:
 - expo login --username wen-kai@hotmail.com --password plastickredpoint!
 - expo build:ios --type simulator --release-channel e2e_testing
+- expo start --ios &
+- echo 'SLEEP 60'
+- sleep 60
 - detox test --configuration ios.sim --cleanup
