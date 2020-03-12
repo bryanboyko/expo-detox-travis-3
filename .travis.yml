@@ -30,7 +30,6 @@ script:
 - wget https://exp-shell-app-assets.s3.us-west-1.amazonaws.com/ios/%40wen-kai/expo-detox-travis-3-c95eacf9-c334-4c48-9379-42c6214e028e-simulator.tar.gz
 - tar -xvzf expo-detox-travis-3-c95eacf9-c334-4c48-9379-42c6214e028e-simulator.tar.gz
 - instruments -w help
-- xcrun instruments -w CD0B79B0-1445-45E1-9360-C72A7507E37E
 - sleep 60
 - xcrun simctl install booted expo-detox-travis-3.app
 - xcrun simctl launch booted com.expoDetoxTravis.expoDetoxTravis
