@@ -33,7 +33,7 @@
     "test-runner": "jest",
     "configurations": {
       "ios.sim": {
-        "binaryPath": "bin/Exponent.app",
+        "binaryPath": "expo-detox-travis-3.app",
         "build": "expo build:ios --type simulator --release-channel e2e_test_channel",
         "type": "ios.simulator",
         "name": "iPhone 8"
