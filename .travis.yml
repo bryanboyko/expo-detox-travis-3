@@ -34,4 +34,3 @@ script:
 - xcrun simctl install booted expo-detox-travis-3.app
 - xcrun simctl launch booted com.expoDetoxTravis.expoDetoxTravis
 - detox test --configuration ios.sim --cleanup
-- tail -f ~/Library/Logs/CoreSimulator/CD0B79B0-1445-45E1-9360-C72A7507E37E/system.log
