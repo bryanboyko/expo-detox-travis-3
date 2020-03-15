@@ -33,7 +33,6 @@ script:
 - IFS=$'\n'
 - builds_arr=($builds)
 - d_link=($link)
-- echo "THE LINK: ${d_link[0]}"
 - final_link="${d_link[0]}"
 - wget "$final_link"
 - file_name=$(echo "$final_link" | awk -F'wen-kai/' '{print $2}')
