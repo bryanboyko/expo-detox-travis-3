@@ -1,15 +1,12 @@
 language: objective-c
 osx_image: xcode11.3
 
-branches:
-  only:
-  - master
-
 env:
   global:
   - NODE_VERSION=stable
 
 install:
+- brew install wget
 - brew tap wix/brew
 - brew install applesimutils
 - curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
@@ -19,7 +16,29 @@ install:
 - nvm alias default $NODE_VERSION
 
 - npm install -g react-native-cli
+- npm install -g detox-cli
+- npm install -g expo-cli
+- npm install detox
+
+before_script:
+- ./setup.sh
+- expo login --username wen-kai@hotmail.com --password plastickredpoint!
 
 script:
-- detox build --configuration ios.sim
+- expo build:ios --type simulator --release-channel e2e_test
+- builds=$(expo build:status)
+- IFS=" "
+- builds_arr=($builds)
+- link="${builds_arr[13]}"
+- IFS=$'\n'
+- builds_arr=($builds)
+- d_link=($link)
+- final_link="${d_link[0]}"
+- wget "$final_link"
+- file_name=$(echo "$final_link" | awk -F'wen-kai/' '{print $2}')
+- tar -xvzf "$file_name"
+- open -a `xcode-select -p`/Applications/Simulator.app
+- sleep 60
+- xcrun simctl install booted expo-detox-travis-3.app
+- xcrun simctl launch booted com.expoDetoxTravis.expoDetoxTravis
 - detox test --configuration ios.sim --cleanup
